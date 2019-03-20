@@ -27,7 +27,6 @@ func init() {
 }
 
 func main() {
-	fmt.Println(uploadPath)
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "8000"
@@ -73,7 +72,6 @@ func uploadFileHandler(w http.ResponseWriter, r *http.Request) *appError {
 	}
 	fileID := uuid.Must(uuid.NewV4()).String()
 	fileEndings, err := mime.ExtensionsByType(filetype)
-	log.Println(fileEndings)
 	if err != nil {
 		return appErrorf(err, "Can not read file type : %v", err)
 	}
